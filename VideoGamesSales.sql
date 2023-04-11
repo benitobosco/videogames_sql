@@ -59,7 +59,7 @@ INSERT INTO [SQLPortofolioProject_VideoGamesSales]..[vgsales_sales] (Year, Total
 	GROUP BY Year
 	ORDER BY Year
 
---The total number of copies of video games sold for each year (from 1980 to 2015) in NA, EU, JP, and all over the world (Global Sales)
+--Total number of copies of video games sold for each year (from 1980 to 2015) in NA, EU, JP, and all over the world (Global Sales)
 SELECT *
 FROM [SQLPortofolioProject_VideoGamesSales]..[vgsales_sales]
 ORDER BY Year
@@ -68,7 +68,7 @@ ORDER BY Year
 
 /** Publisher **/
 
---The total number of video games that published by each publisher from 1980 to 2015 (We will only take the top 15 for simplification)
+--Total number of video games that published by each publisher from 1980 to 2015 (We will only take the top 15 for simplification)
 SELECT TOP(15) Publisher, COUNT(Publisher) as countpublisher
 FROM [SQLPortofolioProject_VideoGamesSales]..vgsales
 WHERE Year <> 'N/A' AND CAST(Year as int)<'2016'
@@ -139,14 +139,17 @@ GROUP BY Publisher
 
 /**===============================================================================================**/
 
---The total number of video games released for each genre from 1980 to 2015
+/** Genre **/
+
+
+--Total number of video games released for each genre from 1980 to 2015
 SELECT Genre, COUNT(Genre) as countgenre
 FROM [SQLPortofolioProject_VideoGamesSales]..vgsales
 WHERE Year <> 'N/A' AND CAST(Year as int)<'2016'
 GROUP BY Genre
 ORDER BY COUNT(Genre) desc
 
---The total number of copies of video games sold based on the genre from 1980 to 2015 in NA, EU, JP, and all over the world (Global Sales).
+--Total number of copies of video games sold based on the genre from 1980 to 2015 in NA, EU, JP, and all over the world (Global Sales).
 SELECT Genre
 		,SUM(NA_Sales) as Total_NA_Sales
 		,SUM(EU_Sales) as Total_EU_Sales
@@ -186,12 +189,15 @@ INSERT INTO [SQLPortofolioProject_VideoGamesSales]..[vgsales_genre] (Year, Genre
 	GROUP BY Genre, Year
 	ORDER BY Year
 
---The total number of copies of video games sold based on the genre for each year (from 1980 to 2015) in NA, EU, JP, and all over the world (Global Sales).
+--Total number of copies of video games sold based on the genre for each year (from 1980 to 2015) in NA, EU, JP, and all over the world (Global Sales).
 SELECT *
 FROM [SQLPortofolioProject_VideoGamesSales]..[vgsales_genre]
 ORDER BY Year
 
 /**===============================================================================================**/
+
+/** Console **/
+
 
 --Total number of video games that we can play on each console from 1980 to 2015
 SELECT Platform, COUNT(Platform) as countplatform
