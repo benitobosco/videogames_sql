@@ -1,4 +1,4 @@
-# EDA and Visualization - Video Games Sales
+# EDA and Visualization Using SQL and Tableau - Video Games Sales
 
 [Dataset source](https://www.kaggle.com/datasets/gregorut/videogamesales)
 
